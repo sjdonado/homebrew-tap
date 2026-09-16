@@ -30,7 +30,7 @@ class BrowserRouter < Formula
   end
 
   test do
-    assert_predicate prefix/"BrowserRouter.app/Contents/MacOS/BrowserRouter", :exist?
-    assert_predicate prefix/"BrowserRouter.app/Contents/Info.plist", :exist?
+    assert_path_exists prefix/"BrowserRouter.app/Contents/MacOS/BrowserRouter"
+    assert_path_exists prefix/"BrowserRouter.app/Contents/Info.plist"
   end
 end
