@@ -7,10 +7,10 @@ class BrowserRouter < Formula
   depends_on macos: :ventura
 
   def install
-    system "xcrun", "swiftc", "-O", "-framework", "AppKit",
-           "-o", "BrowserRouter", "BrowserRouter/main.swift"
     (prefix/"BrowserRouter.app/Contents/MacOS").mkpath
-    mv "BrowserRouter", prefix/"BrowserRouter.app/Contents/MacOS/BrowserRouter"
+    system "xcrun", "swiftc", "-O", "-framework", "AppKit",
+           "-o", prefix/"BrowserRouter.app/Contents/MacOS/BrowserRouter",
+           "BrowserRouter/main.swift"
     cp "BrowserRouter/Info.plist", prefix/"BrowserRouter.app/Contents/Info.plist"
     # Editing Info.plist invalidates a signature, so sign the assembled bundle.
     system "codesign", "--force", "--sign", "-", prefix/"BrowserRouter.app"
